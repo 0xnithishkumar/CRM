@@ -4,7 +4,6 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    k = ''
     if request.method == 'POST':
         username = request.POST['user_name']
         password = request.POST['password']
@@ -20,4 +19,6 @@ def home(request):
         return render(request, 'home.html', {})
 
 def logout_user(request):
-    pass
+    logout(request)
+    messages.success(request, "You have been logged out!")
+    return redirect('home')
