@@ -4,6 +4,7 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
+    k = ''
     if request.method == 'POST':
         username = request.POST['user_name']
         password = request.POST['password']
@@ -13,7 +14,7 @@ def home(request):
             login(request, user)
             messages.success(request, "You have logged in successfully!")
         else:
-            messages.error(request, "You are not logged in, please try again.")
+            messages.warning(request, "You are not logged in, please try again.")
         return redirect('home')
     else:
         return render(request, 'home.html', {})

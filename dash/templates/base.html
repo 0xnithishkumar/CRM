@@ -9,17 +9,18 @@
   <body>
     {% include  'nav.html' %}
     <div class="container">
-        {% if messages %}
-          {% for i in messages %}
-            <div class="alert alert-primary alert-dismissible fade show" role="alert"> {{i}}
+      {% if messages %}
+        {% for i in messages %}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+              {{ i }}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-          {% endfor %}
-        {% endif %}
-        {% block content %}
-        {% endblock %}
+        {% endfor %}
+      {% endif %}
+      {% block content %}
+      {% endblock %}
     </div>
    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
