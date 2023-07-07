@@ -4,9 +4,6 @@ from django import forms
 
 
 class SignupForm(UserCreationForm):
-    # first_name = forms.CharField(label='', max_length=20, widget=forms.TextInput(attrs={'class':'form-contorl', 'placeholder':'First name'}))
-    # last_name = forms.CharField(label='', max_length=20,  widget=forms.TextInput(attrs={'class':'form-contorl', 'placeholder':'Last name'}))
-    
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email','password1', 'password2')
