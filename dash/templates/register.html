@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Register</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-warning alert-dismissible fase show" role="alert">
+                Your form has the following errors
+                {% for i in forms.errors %}
+                    {% if i.errors %}
+                        {{i}}
+                    {% endif %}
+                {% endfor %}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+        {% endif %}
+            
+        {{form.as_p}}
+        <button type="submit" class="btn btn-dark">Register</button>
+    </form>
+
+{% endblock %}
