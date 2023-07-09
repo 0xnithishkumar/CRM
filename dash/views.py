@@ -66,7 +66,7 @@ def add_record(request):
         if request.method == 'POST':
             form = AddrecordForm(request.POST)
             if form.is_valid():
-                add_record = form.save()
+                form.save()
                 messages.success(request, "The record has been added!")
                 return redirect('home')
         else:
@@ -74,4 +74,20 @@ def add_record(request):
             return render(request, 'add_record.html', {'form':form})
     else:
         messages.success(request, "You must be logged in to add a record!")
+        return redirect('home')
+    
+def update_record(request, pk):
+    if request.user.is_authenticated:
+        customer_record = Customer_db.objects.get(id=pk)
+        if request.method == 'POST':
+            form = AddrecordForm(request.POST, instance=customer_record)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "The record has been updated!")
+                return redirect('home')
+        else:
+            form = AddrecordForm(instance=customer_record)
+            return render(request, 'update_record.html', {'form':form})
+    else:
+        messages.success(request, "You must be logged in to update a record!")
         return redirect('home')

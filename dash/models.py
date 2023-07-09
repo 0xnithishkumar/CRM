@@ -1,7 +1,9 @@
 from django.db import models
+from datetime import datetime
 
 class Customer_db(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(default=datetime.now, editable=False)
+    updated_on = models.DateTimeField(default=datetime.now, editable=False)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     email = models.CharField(max_length=50)
