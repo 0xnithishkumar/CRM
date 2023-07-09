@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignupForm
+from .forms import SignupForm, AddrecordForm
 from .models import Customer_db
 
 # Create your views here.
 def home(request):
     records = Customer_db.objects.all()
-
 
     if request.method == 'POST':
         username = request.POST['user_name']
@@ -60,4 +59,19 @@ def delete_record(request, pk):
         return redirect('home')
     else:
         messages.success(request, "You must be logged in to delete the record!")
+        return redirect('home')
+    
+def add_record(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = AddrecordForm(request.POST)
+            if form.is_valid():
+                add_record = form.save()
+                messages.success(request, "The record has been added!")
+                return redirect('home')
+        else:
+            form = AddrecordForm()
+            return render(request, 'add_record.html', {'form':form})
+    else:
+        messages.success(request, "You must be logged in to add a record!")
         return redirect('home')
