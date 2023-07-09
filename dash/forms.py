@@ -48,7 +48,7 @@ class AddrecordForm(forms.ModelForm):
     class Meta:
         model = Customer_db
         fields = '__all__'
-        
+
     first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'First name', 'class':'form-control'}), label='')
     last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Last name', 'class':'form-control'}), label='')
     email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Email', 'class':'form-control'}), label='')

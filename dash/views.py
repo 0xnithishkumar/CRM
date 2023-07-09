@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignupForm, AddrecordForm
 from .models import Customer_db
+from datetime import datetime
 
 # Create your views here.
 def home(request):
@@ -79,12 +80,13 @@ def add_record(request):
 def update_record(request, pk):
     if request.user.is_authenticated:
         customer_record = Customer_db.objects.get(id=pk)
+        customer_record.updated_on = datetime.now()
         if request.method == 'POST':
             form = AddrecordForm(request.POST, instance=customer_record)
             if form.is_valid():
                 form.save()
                 messages.success(request, "The record has been updated!")
-                return redirect('home')
+                return redirect(f'/record/{pk}')
         else:
             form = AddrecordForm(instance=customer_record)
             return render(request, 'update_record.html', {'form':form})
