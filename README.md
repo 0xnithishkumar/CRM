@@ -1,5 +1,5 @@
-# Django CRUD Project
-Welcome to the Django CRUD project repository! This project is a simple web application built using the Django framework, offering CRUD (Create, Read, Update, Delete) functionality for managing records.
+# Django CRM Project
+Welcome to the Django CRM project repository! This project is a simple web application built using the Django framework, offering CRUD (Create, Read, Update, Delete) functionality for managing records.
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -8,7 +8,7 @@ Welcome to the Django CRUD project repository! This project is a simple web appl
 4. [Usage](#usage)
 
 ### Introduction
-This Django CRUD project was developed as part of my learning journey in web development. It allows users to register, log in, create new records, view record details, update existing records, and even delete them. The project demonstrates the fundamentals of Django and provides a solid foundation for building similar applications.
+This Django CRM project was developed as part of my learning journey in web development. It allows users to register, log in, create new records, view record details, update existing records, and even delete them. The project demonstrates the fundamentals of Django and provides a solid foundation for building similar applications.
 
 ### Features
 + User registration and authentication system
